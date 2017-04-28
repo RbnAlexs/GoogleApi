@@ -8,7 +8,7 @@ use App\Booking as Booking;
 use App\Room as Room;
 use When\When;
 use DateTime;
-use Log;
+//use Log;
 
 define('DEFAULT_BOOKING_STATUS', 'confirmed');
 define('DEFAULT_BOOKING_CONFIRMED', 1);
@@ -20,12 +20,12 @@ class BookingController extends Controller
   }
 
   public function getBooking() {
-    try {
+  /*  try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
     } catch (\Exception $e) {
       return redirect('login', 302, [], $this->getHttpSecure());
     }
-
+*/
     $booking_errors = [];
     $booking_parameters = [];
     $success_message = "";
@@ -45,12 +45,13 @@ class BookingController extends Controller
         unset($_SESSION['success']);
     }
 
-    try {
+  /*  try {
       $user = \Socialite::driver('google')->userFromToken($_SESSION['token']);
       $email = $user->email;
     } catch (\Exception $e) {
 
     }
+  */
 
     $purpose_labels = config('booking.purpose_labels');
     $random_purpose = array_rand ( $purpose_labels, 1 );
@@ -76,12 +77,12 @@ class BookingController extends Controller
   }
 
   public function postBooking() {
-    try {
+    /*try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
     } catch (\Exception $e) {
       return redirect('login', 302, [], $this->getHttpSecure());
     }
-
+    */
     $validator = \ValidatorX::make(app()->request->all(), [
       'room_id' => 'required|numeric',
       'purpose' => 'required|max:255',
@@ -278,11 +279,12 @@ class BookingController extends Controller
   }
 
   public function postCancel($booking_id_param) {
-    try {
+   /* try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
     } catch (\Exception $e) {
       return redirect('login', 302, [], $this->getHttpSecure());
     }
+    */
 
     try {
       $booking_id = decodeBookingIdForView($booking_id_param)[0];
@@ -305,15 +307,16 @@ class BookingController extends Controller
   }
 
   public function getViewAll($date, $status) {
-    try {
+  /*  try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
     } catch (\Exception $e) {
       return redirect('login', 302, [], $this->getHttpSecure());
     }
+    */
 
     $start_ts = strtotime($date);
     $segment2 = app()->request->segment(2);
-    $reserved_by = $_SESSION['email'];
+    $reserved_by = "hola@hot.com";
     $bookings = Booking::where('status', $status)
                   ->whereDay('start', date('d', $start_ts))
                   ->whereMonth('start', date('m', $start_ts))
@@ -350,11 +353,12 @@ class BookingController extends Controller
   }
 
   public function postViewAll() {
-    try {
+   /* try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
     } catch (\Exception $e) {
       return redirect('login', 302, [], $this->getHttpSecure());
     }
+    */
 
     $booking_date = date('Y-m-d', strtotime(app()->request->booking_date));
     $status = app()->request->status;

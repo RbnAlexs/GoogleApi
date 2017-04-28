@@ -47,7 +47,6 @@
               <img src="/images/silid-60px.jpg" height="60" class="z-depth-2"/>
             @endif
           </a>
-          @if (isset($_SESSION['token']))
           <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="hide-on-med-and-down">
             <li @if(app()->request->is('booking')) class='active'@endif><a href="/booking">Book Now</a></li>
@@ -57,7 +56,6 @@
               <a class="waves-effect waves-light btn red accent-3" href="/logout" onclick="return confirm('Are you sure you want to Sign-out?')">Sign out</a>
             </li>
           </ul>
-          @elseif (app()->request->segment(1) != 'login' && !isset($_SESSION['token']))
           <ul id="nav-mobile" class="hide-on-med-and-down">
             <li>
               <a href="/socialite/google/login">
@@ -65,11 +63,9 @@
               </a>
             </li>
           </ul>
-          @endif
         </div>
       </nav>
 
-      @if (isset($_SESSION['token']))
       <ul id="slide-out" class="side-nav">
         <li><a href="/booking">Book Now<i class="material-icons">mode_edit</i></a></li>
         <li><a href="/booking/view-all/{{date('Y-m-d')}}/confirmed">All Bookings<i class="material-icons">view_list</i></a></li>
@@ -80,7 +76,6 @@
           <a class="red accent-3" href="/logout" onclick="return confirm('Are you sure you want to Sign-out?')">Sign out<i class="material-icons">power_settings_new</i></a>
         </li>
       </ul>
-      @endif
 
       <div class="container">
       @if (env('COMPANY_HEADING')!='')

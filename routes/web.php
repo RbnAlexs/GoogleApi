@@ -30,7 +30,7 @@ $app->get('/', function() use ($app, $secure) {
   }
 });
 
-/* Login page */
+/* Login page 
 $app->get('/login', function() use ($app, $secure) {
   try {
     \Socialite::driver('google')->userFromToken($_SESSION['token']);
@@ -97,7 +97,9 @@ $app->post('/booking/view-own/{date}/{status}', 'BookingController@postViewAll')
  * https://lumen.laravel.com/docs/5.4/configuration#configuration-files)
  * http://itsolutionstuff.com/post/solved-access-not-configured-google-api-truncated-on-google-console-developerexample.html
  * http://stackoverflow.com/questions/35536548/unable-to-use-laravel-socialite-with-lumen
- */
+ 
+
+
 $app->get('/socialite/google/login', function () use ($app, $secure) {
   $scopes = [
             'https://www.googleapis.com/auth/plus.me',
@@ -106,7 +108,7 @@ $app->get('/socialite/google/login', function () use ($app, $secure) {
   return \Socialite::driver('google')->scopes ($scopes)->stateless(false)->redirect();
 });
 
-/* Socialite Google callback - after google login */
+ Socialite Google callback - after google login 
 $app->get('/socialite/google/callback', function () use ($app, $secure) {
   try {
     $user = \Socialite::driver('google')->stateless(false)->user();
@@ -135,7 +137,7 @@ $app->get('/socialite/google/callback', function () use ($app, $secure) {
   }
 });
 
-/* Logout */
+
 $app->get('/logout', function () use ($app, $secure) {
   unset($_SESSION['token']);
   unset($_SESSION['expiresIn']);
@@ -143,7 +145,7 @@ $app->get('/logout', function () use ($app, $secure) {
   return redirect('login', 302, [], $secure);
 });
 
-
+*/
 /* decode booking id for view */
 function decodeBookingIdForConfirmation($booking_id) {
   $hashids = new Hashids(env('APP_KEY'), config('booking.hashes.CONFIRMATION_HASH_LENGTH'));
