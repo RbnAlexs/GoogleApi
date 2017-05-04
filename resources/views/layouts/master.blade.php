@@ -24,6 +24,19 @@
     <script src="/js/materialize.js"></script>
     <script src="/js/pickadate.js/lib/picker.time.js"></script>
     <script src="/js/scripts.js"></script>
+    <script>
+    jQuery.extend( jQuery.fn.pickadate.defaults, {
+    monthsFull: [ 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre' ],
+    monthsShort: [ 'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic' ],
+    weekdaysFull: [ 'domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado' ],
+    weekdaysShort: [ 'dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb' ],
+    today: 'hoy',
+    clear: 'borrar',
+    close: 'cerrar',
+    format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd'
+    });
+    </script>
     <style>
     @yield('style')
     </style>
@@ -44,22 +57,22 @@
             @if( file_exists("images/company/".env('COMPANY_LOGO')) && !is_dir("images/company/".env('COMPANY_LOGO')) )
               <img src="/images/company/{{env('COMPANY_LOGO')}}" height="60" class="z-depth-2"/>
             @else
-              <img src="/images/silid-60px.jpg" height="60" class="z-depth-2"/>
+              <!--<img src="/images/silid-60px.jpg" height="60" class="z-depth-2"/>-->
             @endif
           </a>
           <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="hide-on-med-and-down">
-            <li @if(app()->request->is('booking')) class='active'@endif><a href="/booking">Book Now</a></li>
-            <li @if(app()->request->segment(2)=='view-all') class="active"@endif><a href="/booking/view-all/{{date('Y-m-d')}}/confirmed">All Bookings</a></li>
-            <li @if(app()->request->segment(2)=='view-own') class="active"@endif><a href="/booking/view-own/{{date('Y-m-d')}}/confirmed">Own Bookings</a></li>
+            <li @if(app()->request->is('booking')) class='active'@endif><a href="/booking">Reservar ahora</a></li>
+            <li @if(app()->request->segment(2)=='view-all') class="active"@endif><a href="/booking/view-all/{{date('Y-m-d')}}/confirmed">Todas las reservaciones</a></li>
+            <li @if(app()->request->segment(2)=='view-own') class="active"@endif><a href="/booking/view-own/{{date('Y-m-d')}}/confirmed">Tus reservaciones</a></li>
             <li class="right">
-              <a class="waves-effect waves-light btn red accent-3" href="/logout" onclick="return confirm('Are you sure you want to Sign-out?')">Sign out</a>
+              <a class="waves-effect waves-light btn red accent-3" href="/logout" onclick="return confirm('Are you sure you want to Sign-out?')">Salir</a>
             </li>
           </ul>
           <ul id="nav-mobile" class="hide-on-med-and-down">
             <li>
               <a href="/socialite/google/login">
-                <img src="/images/btn_google_signin_dark_normal_web.png" height="30" style="vertical-align:middle">
+                <!--<img src="/images/btn_google_signin_dark_normal_web.png" height="30" style="vertical-align:middle">-->
               </a>
             </li>
           </ul>
@@ -78,11 +91,7 @@
       </ul>
 
       <div class="container">
-      @if (env('COMPANY_HEADING')!='')
-      <h4 class="{{env('COMPANY_BASE_COLOR')}}">{{env('COMPANY_HEADING')}}</h4>
-      @else
-      <h1 class="green-text"><img src="/images/silid-60px.jpg" height="60"/>ilid Booking</h1>
-      @endif
+      <h4 class="{{env('COMPANY_BASE_COLOR')}}">Franslux</h4>
       </div>
     </div>
     </header>
@@ -93,19 +102,8 @@
     </main>
 
     <div>
-      <footer class="page-footer
-        @if(env('COMPANY_BASE_THEME_COLOR')!='')
-          {{env('COMPANY_BASE_THEME_COLOR')}}
-        @else
-          green accent-5
-        @endif
-        ">
-         <div class="footer-copyright">
-           <div class="container">
-           Powered by Silid Meeting Room Booking 2017
-           <a class="grey-text text-lighten-4 right" href="https://github.com/warrenca/silid"><img src="/images/silid-60px.jpg" height="15" class="z-depth-2" style="vertical-align: text-top"/>  Silid@GitHub</a>
-           </div>
-         </div>
+      <footer class="page-footer">
+
       </footer>
     </div>
 

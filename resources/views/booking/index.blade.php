@@ -2,7 +2,7 @@
 @section('content')
   <div class="col s12 m2 center-align">
     <p class="z-depth-3" style="padding: 15px 0">
-      <i class="material-icons">info</i> Select a room, booking date, time and duration.
+      <i class="material-icons">info</i> Selecciona una sala, fecha y hora de reservación
     </p>
   </div>
 
@@ -30,15 +30,15 @@
   <form class="col s12" name="booking" method="POST">
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="{{$purpose_label}}" type="text" id="purpose" name="purpose" value="{{@$booking_parameters['purpose']}}" maxlength="255">
-        <label for="purpose">Purpose</label>
+        <input placeholder="Tema de la junta" type="text" id="purpose" name="purpose" value="{{@$booking_parameters['purpose']}}" maxlength="255">
+        <label for="purpose">Asunto</label>
       </div>
     </div>
     <div class="row">
       <div class="col s6 room-date-container">
         <div class="input-field col s12">
           <select name="room_id">
-            <option value="" disabled selected>Select Room</option>
+            <option value="" disabled selected>Selecciona Sala</option>
             @foreach ($rooms as $room)
               <option value="{{$room->id}}"
                 @if (isset($booking_parameters['room_id']) &&
@@ -48,28 +48,28 @@
                 >{{$room->name}}</option>
             @endforeach
           </select>
-          <label>Select Room</label>
+          <label>Selecciona Sala</label>
         </div>
         <div class="input-field col s12">
-          <input placeholder="Date" id="booking_date" type="text" class="datepicker" name="booking_date" value="{{@$booking_parameters['booking_date']}}">
-          <label for="booking_date">Select booking date</label>
+          <input placeholder="Fecha" id="booking_date" type="text" class="datepicker" name="booking_date" value="{{@$booking_parameters['booking_date']}}">
+          <label for="booking_date">Selecciona una fecha</label>
         </div>
       </div>
       <div class="input-field col s6">
         <div id="participants-list">
         </div>
-        <label for="participants-list">Participants email</label>
+        <label for="participants-list">Participantes (email)</label>
         <input type="hidden" name="participants" id="participants" value="{{@$booking_parameters['participants']}}"/>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
         <input placeholder="Time" id="booking_time" type="text" class="timepicker" name="booking_time" value="{{@$booking_parameters['booking_time']}}">
-        <label for="booking_time">Select booking time</label>
+        <label for="booking_time">Seleccionar horario</label>
       </div>
       <div class="input-field col s6">
         <select name="booking_duration" id="booking_duration">
-          <option value="" disabled selected>Booking duration</option>
+          <option value="" disabled selected>duración</option>
           @foreach ($booking_durations as $duration => $label)
             <option value="{{$duration}}"
             @if (isset($booking_parameters['booking_duration']) &&
@@ -79,7 +79,7 @@
             >{{$label}}</option>
           @endforeach
         </select>
-        <label>Duration</label>
+        <label>Duración</label>
       </div>
     </div>
     <div class="row">
@@ -140,10 +140,10 @@
         @else
           green accent-5
         @endif
-        " type="submit" name="action">Submit
+        " type="submit" name="action">Enviar
           <i class="material-icons right">send</i>
         </button>
-        <a href="/booking/reset" onclick="return confirm('Are you sure you want to clear the form?')" class="waves-effect waves-teal btn-flat">Reset</a>
+        <a href="/booking/reset" onclick="return confirm('Are you sure you want to clear the form?')" class="waves-effect waves-teal btn-flat">Borrar</a>
       </div>
     </div>
   </form>
