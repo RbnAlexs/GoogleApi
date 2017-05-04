@@ -26,9 +26,9 @@ return [
     'Collaborative Meetings',
   ],
   'recursion_frequency' => [
-    'daily' => 'Daily',
-    'weekly' => 'Weekly',
-    'monthly' => 'Monthly',
+    'daily' => 'Diariamente',
+    'weekly' => 'Semanalmente',
+    'monthly' => 'Mensualmente',
   ],
   'recursion_count' => [
     '2' => 2,
