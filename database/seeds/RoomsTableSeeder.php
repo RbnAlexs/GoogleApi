@@ -13,9 +13,9 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
       $rooms = [
-        'Conference Room' => 'A meeting room for a lot of people. Equipped with video conference devices.',
-        'Meeting Room A' => 'A meeting room for four people',
-        'Meeting Room B' => 'A meeting room for up to six people',
+        'Carlo corinto' => 'Sala de juntas para 10 personas.',
+        'Moschino' => 'Sala de juntas para 5 personas',
+        'Paris Hilton' => 'Sala de juntas para 6 personas',
       ];
 
       foreach ($rooms as $name => $description) {

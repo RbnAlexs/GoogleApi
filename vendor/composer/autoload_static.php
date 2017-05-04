@@ -972,6 +972,8 @@ class ComposerStaticInitc0900497fc6c0c749dcae6472175e825
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeender.php',
+        'UsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_184756_users_table.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
