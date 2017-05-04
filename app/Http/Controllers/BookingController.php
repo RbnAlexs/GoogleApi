@@ -108,7 +108,7 @@ class BookingController extends Controller
 
     $room_id = app()->request->room_id;
     $purpose = app()->request->purpose;
-    $reserved_by = $_SESSION['email']; // do not use the one in the form
+    $reserved_by = 'ruben@mktv.mx'; // do not use the one in the form
     $booking_date = app()->request->booking_date;
     $participants = app()->request->participants;
     $booking_duration = app()->request->booking_duration;
@@ -168,7 +168,7 @@ class BookingController extends Controller
         // http://stackoverflow.com/questions/13387490/determining-if-two-time-ranges-overlap-at-any-point
         if ($booking_start_ts < $end_ts && $booking_end_ts > $start_ts) {
           $booking_link = generateBookingViewLink($currentBooking->id);
-          $_SESSION['booking_errors'] = ["An active room booking is already reserved on the timing you selected. View it <a href='$booking_link'>here</a>."];
+          $_SESSION['booking_errors'] = ["Ya existe una reservación en la hora y fecha deseada. Consultala <a href='$booking_link'>here</a>."];
           return redirect('booking', 302, [], $this->getHttpSecure());
         }
       }
