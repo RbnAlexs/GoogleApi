@@ -187,7 +187,7 @@ class BookingController extends Controller
       $booking->confirmed = DEFAULT_BOOKING_CONFIRMED;
       $booking->save();
 
-      $_SESSION['success'] = "An email confirmation has been sent to you.";
+      $_SESSION['success'] = " Se ha confirmado esta reservación.";
       $_SESSION['recursion_frequency'] = $recursion_frequency;
       $_SESSION['recursion_count'] = $recursion_count;
       $this->dispatch(new SendConfirmationEmailQ($reserved_by, $booking, true));
@@ -316,7 +316,7 @@ class BookingController extends Controller
 
     $start_ts = strtotime($date);
     $segment2 = app()->request->segment(2);
-    $reserved_by = "hola@hot.com";
+    $reserved_by = "ruben@mktv.mx";
     $bookings = Booking::where('status', $status)
                   ->whereDay('start', date('d', $start_ts))
                   ->whereMonth('start', date('m', $start_ts))

@@ -3,9 +3,9 @@
 <div class="col s12 m2 center-align">
   <p class="z-depth-3" style="padding: 15px 0">
     @if (app()->request->segment(2)=='view-all')
-    <i class="material-icons">supervisor_account</i> Everyone's Bookings
+    <i class="material-icons">supervisor_account</i> Todas las reservaciones
     @else
-    <i class="material-icons">person_pin</i> Your own bookings
+    <i class="material-icons">person_pin</i> Tus reservaciones
     @endif
   </p>
 </div>
@@ -14,7 +14,7 @@
   <div class="row">
     <div class="input-field col s6 m3">
       <input placeholder="Date" id="booking_date" type="text" class="listing-datepicker" name="booking_date" value="{{$date}}">
-      <label for="booking_date">Bookings for the date:</label>
+      <label for="booking_date">Reservaciones por fecha:</label>
     </div>
     <input type="hidden" name="status" value="{{$status}}">
     <div class="input-field col s4">
@@ -24,24 +24,24 @@
       @else
         green accent-5
       @endif
-      " type="submit" name="action">Submit
+      " type="submit" name="action">Enviar
         <i class="material-icons right">send</i>
       </button>
     </div>
   </div>
 </form>
 
-<a class="waves-effect waves-teal btn-flat {{$confirmed_active}}" href="/booking/{{app()->request->segment(2)}}/{{app()->request->segment(3)}}/confirmed">Confirmed</a>
-<a class="waves-effect waves-teal btn-flat {{$cancelled_active}}" href="/booking/{{app()->request->segment(2)}}/{{app()->request->segment(3)}}/cancelled">Cancelled</a>
+<a class="waves-effect waves-teal btn-flat {{$confirmed_active}}" href="/booking/{{app()->request->segment(2)}}/{{app()->request->segment(3)}}/confirmed">Confirmada</a>
+<a class="waves-effect waves-teal btn-flat {{$cancelled_active}}" href="/booking/{{app()->request->segment(2)}}/{{app()->request->segment(3)}}/cancelled">Cancelada</a>
 
 
 <table class="bordered striped">
  <thead>
    <tr>
-     <th data-field="room">Room</th>
-     <th data-field="purpose">Purpose</th>
-     <th data-field="reserved_by">Reserved By</th>
-     <th data-field="time">Time (start-end)</th>
+     <th data-field="room">Sala</th>
+     <th data-field="purpose">Asunto</th>
+     <th data-field="reserved_by">Reservado por</th>
+     <th data-field="time">Horario</th>
    </tr>
  </thead>
 
@@ -59,7 +59,7 @@
    </tr>
    @empty
    <tr>
-      <td colspan="4">No bookings today</td>
+      <td colspan="4">No hay reservaciones para hoy</td>
    </tr>
    @endforelse
  </tbody>

@@ -8,9 +8,9 @@
   @endif
 
   <h5 class="header">
-    The room was booked by {{$booking->reserved_by}} for the room:<br/>
+    La reservación fue hecha por {{$booking->reserved_by}} en la sala:<br/>
     <i><u>{{$booking->room->name}}</u></i><br/><br/>
-  Purpose: <i>{{$booking->purpose}}</i></h5>
+  Asunto: <i>{{$booking->purpose}}</i></h5>
   <div class="card horizontal hide-on-med-and-down">
     <div class="card-image">
       <img src="/images/room-{{$booking->room->id}}.jpg">
@@ -18,9 +18,9 @@
     <div class="card-stacked">
       <div class="card-content">
         <ul>
-            <li>Start: <b>{{date('F d, Y @h:i A', strtotime($booking->start))}}</b></li>
-            <li>End: <b>{{date('F d, Y @h:i A', strtotime($booking->end))}}</b></li>
-            <li>Room description: <b>{{$booking->room->description}}</b></li>
+            <li>Inicio: <b>{{date('F d, Y @h:i A', strtotime($booking->start))}}</b></li>
+            <li>Final: <b>{{date('F d, Y @h:i A', strtotime($booking->end))}}</b></li>
+            <li>Descripción de la sala: <b>{{$booking->room->description}}</b></li>
             @if (isset($_SESSION['email']) && $booking->reserved_by==$_SESSION['email'] && $booking->confirmed)
             <li>
               <form action="{{$cancellation_link}}" method="post">
@@ -42,7 +42,7 @@
         @endif
         ">
         @if ($booking->status=='confirmed')
-          <b><i class="material-icons">lock</i> The is room locked and confirmed!</b>
+          <b><i class="material-icons">lock</i> La sala ha sido reservada!</b>
         @elseif ($booking->status=='cancelled')
           <b><i class="material-icons">lock_open</i> The room booking was cancelled</b>
         @else
@@ -84,7 +84,7 @@
          @endif
          ">
          @if ($booking->status=='confirmed')
-           <b><i class="material-icons">lock</i> The is room locked and confirmed!</b>
+           <b><i class="material-icons">lock</i> La sala ha sido reservada!</b>
          @elseif ($booking->status=='cancelled')
            <b><i class="material-icons">lock_open</i> The room booking was cancelled</b>
          @else

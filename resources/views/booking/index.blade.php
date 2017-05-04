@@ -91,12 +91,12 @@
                  (int)$booking_parameters['recursion_options']===1)
               active
             @endif
-            "><i class="material-icons">replay</i>Recursion Options <span id="recursion-options-active-label">
+            "><i class="material-icons">replay</i>Reprogramación automática <span id="recursion-options-active-label">
               @if (isset($booking_parameters['recursion_options']) &&
                    (int)$booking_parameters['recursion_options']===1)
-                (enabled)
+                (habilitado)
               @else
-                (disabled, click to enable)
+                (deshabilitado)
               @endif
             </span></div>
             <div class="collapsible-body">
@@ -112,7 +112,7 @@
                       >{{$label}}</option>
                     @endforeach
                   </select>
-                  <label>Frequency</label>
+                  <label>Frecuencia</label>
                 </div>
                 <div class="input-field col s6">
                   <select name="recursion_count">
@@ -125,7 +125,7 @@
                       >{{$label}}</option>
                     @endforeach
                   </select>
-                  <label>Count</label>
+                  <label>Número</label>
                 </div>
               </div>
             </div>
@@ -219,11 +219,11 @@ $(document).ready(function(){
   $('.collapsible').collapsible({
     accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     onOpen: function(el) {
-      $('#recursion-options-active-label').html('(enabled)')
+      $('#recursion-options-active-label').html('(habilitado)')
       $('#recursion_options').val(1);
     }, // Callback for Collapsible open
     onClose: function(el) {
-      $('#recursion-options-active-label').html('(disabled, click to enable)')
+      $('#recursion-options-active-label').html('(deshabilitado)')
       $('#recursion_options').val(0);
     } // Callback for Collapsible close
   });
