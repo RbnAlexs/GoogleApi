@@ -17,7 +17,7 @@ class UsersTable extends Migration
          {
              $table->increments('id');
              $table->string('name');
-             $table->string('username')->unique();
+             $table->string('email')->unique();
              $table->string('password');
              $table->timestamps();
          });

@@ -30,7 +30,7 @@ $app->get('/', function() use ($app, $secure) {
   }
 });
 
-/* Login page 
+/* Login page */
 $app->get('/login', function() use ($app, $secure) {
   try {
     \Socialite::driver('google')->userFromToken($_SESSION['token']);

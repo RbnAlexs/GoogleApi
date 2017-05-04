@@ -3,12 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>
-      @if (env('COMPANY_HEADING')!='' && env('COMPANY_NAME')!='')
-        {{env('COMPANY_HEADING')}} | {{env('COMPANY_NAME')}}
-      @else
-        Silid Room bookings
-      @endif
+      Franslux - Intranet
     </title>
+    <link rel="shortcut icon" type="images/png" href="/images/favicon.png"/>
     <!--Import Google Icon Font-->
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
