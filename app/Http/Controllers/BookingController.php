@@ -19,6 +19,31 @@ class BookingController extends Controller
     return env('APP_ENV')==='local' ? false : true;
   }
 
+  /*------======== Autentificación ======--------*/
+
+    public function getLog()
+    {
+        return view('login');
+    }
+
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email', 
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->has('remember')))
+        {
+            return ['result' => 'success'];
+        }
+
+        return ['result' => 'fail'];
+    }
+
+
   public function getBooking() {
   /*  try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);

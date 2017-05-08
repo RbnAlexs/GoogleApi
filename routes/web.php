@@ -30,8 +30,8 @@ $app->get('/', function() use ($app, $secure) {
   }
 });
 
-/* Login page */
-$app->get('/login', 'BookingController@getBooking');
+/* Pagina de autentificación */
+$app->get('/login', ['uses' => 'BookingController@getLog']);
  
 
 /* Booking form */
