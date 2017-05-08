@@ -8,6 +8,8 @@ use App\Booking as Booking;
 use App\Room as Room;
 use When\When;
 use DateTime;
+//Request for auth lumen login
+use Illuminate\Http\Request;
 //use Log;
 
 define('DEFAULT_BOOKING_STATUS', 'confirmed');
@@ -21,8 +23,13 @@ class BookingController extends Controller
 
   /*------======== Autentificación ======--------*/
 
-    public function getLog()
+
+    public function getLog(Request $request)
     {
+          $this->middleware('guest', ['except' => ['getLogout', 'getLog']]);
+          $value = $request->session()->get('key', 'default');
+
+
         return view('login');
     }
 
