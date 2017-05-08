@@ -12,7 +12,7 @@
 */
 
 use Hashids\Hashids;
-
+ 
 use App\Mail\Locked as Locked;
 
 $secure = env('APP_ENV')==='local' ? false : true;
@@ -31,38 +31,8 @@ $app->get('/', function() use ($app, $secure) {
 });
 
 /* Login page */
-$app->get('/login', function() use ($app, $secure) {
-  try {
-    \Socialite::driver('google')->userFromToken($_SESSION['token']);
-    return redirect('booking', 302, [], true);
-  } catch (\Exception $e) {
-    unset($_SESSION['token']);
-    unset($_SESSION['expiresIn']);
-    unset($_SESSION['email']);
-  }
-
-  $errors = [];
-  if (isset($_SESSION['errors'])) {
-    $errors = $_SESSION['errors'];
-    unset($_SESSION['errors']);
-  }
-
-  $start_ts = time();
-  $segment2 = app()->request->segment(2);
-  $bookings = '';
-  if (env('SILID_DISPLAY_BOOKINGS_IN_LOGIN_PAGE')) {
-    $bookings = \App\Booking::where('status', 'confirmed')
-    ->whereDay('start', date('d', $start_ts))
-    ->whereMonth('start', date('m', $start_ts))
-    ->whereYear('start', date('Y', $start_ts))
-    ->get();
-  }
-
-  return $app->make('view')->make('login', ['allowed_domains'=>env('SILID_ALLOWED_DOMAINS'),
-   'errors' => $errors,
-   'bookings' => $bookings
-  ]);
-});
+$app->get('/login', 'BookingController@getBooking');
+ 
 
 /* Booking form */
 $app->get('/booking', 'BookingController@getBooking');

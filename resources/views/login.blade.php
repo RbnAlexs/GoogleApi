@@ -19,7 +19,7 @@
       <a href="/socialite/google/login">
         <img src="/images/btn_google_signin_dark_normal_web.png" height="30">
       </a>
-    </p>
+    </p> 
   </div>
 
   @if (env('SILID_DISPLAY_BOOKINGS_IN_LOGIN_PAGE'))

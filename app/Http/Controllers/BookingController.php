@@ -76,6 +76,11 @@ class BookingController extends Controller
     return redirect('booking', 302, [], $this->getHttpSecure());
   }
 
+  public function showLogin(){
+          return app()->make('view')->make('booking/login');
+
+  }
+
   public function postBooking() {
     /*try {
       \Socialite::driver('google')->userFromToken($_SESSION['token']);
